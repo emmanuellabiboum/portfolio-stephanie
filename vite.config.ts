@@ -1,9 +1,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from 'tailwindcss'
 
 export default defineConfig({
-  base: '/portfolio-stephanie/', // le nom exact de ton repo GitHub
+  base: '/portfolio-stephanie/',
   plugins: [react()],
+  css: {
+    postcss: {
+      plugins: [tailwindcss()],
+    },
+  },
 })
+
 
 

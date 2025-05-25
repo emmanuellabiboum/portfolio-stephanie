@@ -17,11 +17,11 @@ export default function Contact() {
       form.current,
       "IQhSjapZCLfCITjc6"
     ).then(
-      (_result) => {
+      (result) => { // Ici, result n'est pas utilisé, mais tu peux le garder pour le typage
         alert("Message envoyé avec succès !");
         form.current?.reset();
       },
-      () => {
+      (error) => { // Ici, error n'est pas utilisé, mais tu peux le garder pour le typage
         alert("Une erreur est survenue, veuillez réessayer.");
       }
     );
@@ -29,7 +29,7 @@ export default function Contact() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100">
-      <div className="flex-grow flex flex-col items-center justify-center px-4">
+      <main className="flex-grow flex flex-col items-center justify-center px-4">
         <div className="bg-white rounded-3xl shadow-2xl p-10 w-full max-w-md">
           <header className="mb-10 text-center">
             <h2 className="text-2xl font-semibold text-indigo-700 mb-2 tracking-widest">CONTACTS</h2>
@@ -70,6 +70,7 @@ export default function Contact() {
             <button
               type="submit"
               className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold hover:from-purple-600 hover:to-indigo-500 shadow-lg transition"
+              aria-label="Envoyer le message"
             >
               SOUMETTRE
             </button>
@@ -85,7 +86,7 @@ export default function Contact() {
             </Link>
           </div>
         </div>
-      </div>
+      </main>
 
       <footer className="bg-indigo-700 text-indigo-100 py-4 text-center mt-10 rounded-t-3xl shadow-inner">
         <small className="text-xs font-light">

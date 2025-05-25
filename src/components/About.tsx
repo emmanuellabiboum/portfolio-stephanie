@@ -2,10 +2,17 @@ import { useRef, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
+// Importer toutes les images utilisées
+import step2 from "../assets/step2.jpg";
+import macCover from "../assets/MAC.jpg";
+// Pour les autres images de projets, tu dois les importer aussi :
+// import stephynoursCover from "../assets/stephynours-cover.jpg";
+// import nissiCover from "../assets/restaurant-nissi.jpg";
+// Si tu ne veux pas gérer ces imports, tu peux mettre les images dans "public" et utiliser "/assets/stephynours-cover.jpg" etc.
+
 const About = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
-
     const [modalImage, setModalImage] = useState<string | null>(null);
 
     const togglePlay = () => {
@@ -17,10 +24,10 @@ const About = () => {
         }
         setIsPlaying(!isPlaying);
     };
+
     const openImage = (src: string) => {
         setModalImage(src);
     };
-
 
     const closeModal = () => {
         setModalImage(null);
@@ -28,6 +35,7 @@ const About = () => {
 
     return (
         <div className="min-h-screen bg-white text-gray-800">
+            {/* Section vidéo */}
             <section className="relative h-64 w-full">
                 <div className="absolute inset-0">
                     <video
@@ -36,28 +44,28 @@ const About = () => {
                         className="w-full h-full object-cover object-top"
                         loop
                     >
-                        <source src="..." type="video/mp4" />
+                        <source src="/videos/intro.mp4" type="video/mp4" />
                         Votre navigateur ne supporte pas la vidéo.
                     </video>
                     <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/10 to-white/10" />
                 </div>
-
                 <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-4">
                     <h1 className="text-white text-4xl md:text-5xl font-bold">À propos de moi</h1>
                     <button
                         onClick={togglePlay}
                         className="px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-800 transition"
+                        aria-label={isPlaying ? "Pause la vidéo" : "Lire la vidéo"}
                     >
                         {isPlaying ? "Pause la vidéo" : "Lire la vidéo"}
                     </button>
                 </div>
             </section>
 
-
+            {/* Section présentation */}
             <section className="py-16 px-6 md:px-20 bg-white">
                 <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
                     <img
-                        src="/src/assets/step2.jpg"
+                        src={step2}
                         alt="Stéphanie"
                         className="rounded-2xl shadow-lg w-full"
                     />
@@ -70,7 +78,7 @@ const About = () => {
                 </div>
             </section>
 
-
+            {/* Section valeurs */}
             <section className="bg-[#f8fafc] py-16 px-6 md:px-20">
                 <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 text-center">
                     <div>
@@ -88,12 +96,15 @@ const About = () => {
                 </div>
             </section>
 
-            {/* Section Projets */}
+            {/* Section projets */}
             <section className="py-16 px-6 md:px-20 bg-white">
                 <h2 className="text-4xl font-bold mb-10 text-center">Mes projets</h2>
                 <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
                     {/* Projet 1 */}
-                    <div className="border rounded-xl p-6 shadow hover:shadow-lg transition cursor-pointer" onClick={() => openImage("/path/to/stephynours-cover.jpg")}>
+                    <div
+                        className="border rounded-xl p-6 shadow hover:shadow-lg transition cursor-pointer"
+                        onClick={() => openImage("/path/to/stephynours-cover.jpg")}
+                    >
                         <h3 className="text-2xl font-semibold mb-4 text-center">STEPHYNOURS</h3>
                         <p className="text-gray-600 mb-4">
                             Un livre de coloriage unique pour enfants, alliant créativité et éducation.
@@ -106,7 +117,10 @@ const About = () => {
                     </div>
 
                     {/* Projet 2 */}
-                    <div className="border rounded-xl p-6 shadow hover:shadow-lg transition cursor-pointer" onClick={() => openImage("/path/to/restaurant-nissi.jpg")}>
+                    <div
+                        className="border rounded-xl p-6 shadow hover:shadow-lg transition cursor-pointer"
+                        onClick={() => openImage("/path/to/restaurant-nissi.jpg")}
+                    >
                         <h3 className="text-2xl font-semibold mb-4 text-center">RESTAURANT LE NISSI</h3>
                         <p className="text-gray-600 mb-4">
                             Une expérience culinaire d’exception alliant saveurs traditionnelles et modernité.
@@ -119,13 +133,16 @@ const About = () => {
                     </div>
 
                     {/* Projet 3 */}
-                    <div className="border rounded-xl p-6 shadow hover:shadow-lg transition cursor-pointer" onClick={() => openImage("/src/assets/MAC.jpg")}>
+                    <div
+                        className="border rounded-xl p-6 shadow hover:shadow-lg transition cursor-pointer"
+                        onClick={() => openImage(macCover)}
+                    >
                         <h3 className="text-2xl font-semibold mb-4 text-center">MAC</h3>
                         <p className="text-gray-600 mb-4">
                             Une émission chrétienne qui inspire, édifie et connecte la communauté.
                         </p>
                         <img
-                            src="/src/assets/MAC.jpg"
+                            src={macCover}
                             alt="MAC émission chrétienne"
                             className="rounded-md w-full h-48 object-cover"
                         />
@@ -139,11 +156,23 @@ const About = () => {
                     onClick={closeModal}
                     className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 cursor-zoom-out"
                 >
-                    <img
-                        src={modalImage}
-                        alt="Agrandissement"
-                        className="max-w-[90vw] max-h-[90vh] rounded-md shadow-lg"
-                    />
+                    <div className="relative">
+                        <img
+                            src={modalImage}
+                            alt="Agrandissement"
+                            className="max-w-[90vw] max-h-[90vh] rounded-md shadow-lg"
+                        />
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                closeModal();
+                            }}
+                            className="absolute top-4 right-4 bg-white/80 rounded-full p-2 shadow-md hover:bg-white transition"
+                            aria-label="Fermer la fenêtre"
+                        >
+                            ✕
+                        </button>
+                    </div>
                 </div>
             )}
 

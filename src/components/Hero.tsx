@@ -9,12 +9,7 @@ const Hero = () => {
         <img
           src={profileImage}
           alt="Stéphanie"
-          className="
-            w-full h-full object-cover
-            transition-transform duration-500
-            hover:scale-105
-            shadow-xl
-          "
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 shadow-xl"
           style={{
             objectPosition: "center 20%", // Ajuste pour bien voir le visage
             marginTop: 0
@@ -22,10 +17,10 @@ const Hero = () => {
         />
       </div>
 
-      {/* Contenu principal avec padding top pour le navbar */}
+      {/* Contenu principal */}
       <div className="relative z-10 flex flex-col justify-between min-h-screen px-6 md:px-20 py-10 pt-24">
-        <div className="min-h-screen flex items-center justify-center ">
-          <div className="max-w-xl space-y-6 bg-white/1 rounded-lg p-6 shadow-lg">
+        <div className="flex-1 flex items-center justify-center">
+          <div className="max-w-xl w-full space-y-6 bg-white/80 rounded-lg p-8 shadow-lg backdrop-blur-sm">
             <h2 className="text-lg text-gray-600 tracking-wide">Enchantée, je suis</h2>
             <h1 className="text-5xl md:text-6xl font-extrabold text-blue-600 leading-tight drop-shadow-sm">
               Stéphanie.B
@@ -38,25 +33,24 @@ const Hero = () => {
           </div>
         </div>
 
-
-        {/* Footer sans ligne blanche */}
-        <footer className="mt-20">
+        {/* Footer */}
+        <footer className="mt-auto mb-6">
           <div className="flex flex-col md:flex-row md:justify-between items-center gap-6 pt-6">
             <div className="flex gap-6">
               <a href="https://www.instagram.com/stephy_bissai?igsh=MWExNTVtYTEwejIwbw==" aria-label="Instagram">
-                <Instagram size={24} className="text-gray-1000 hover:text-pink-500 transition" />
+                <Instagram size={24} className="text-gray-800 hover:text-pink-500 transition" />
               </a>
               <a href="#" aria-label="Mail">
-                <Mail size={24} className="text-gray-1000 hover:text-blue-500 transition" />
+                <Mail size={24} className="text-gray-800 hover:text-blue-500 transition" />
               </a>
               <a href="https://www.facebook.com/profile.php?id=61573837800433&__tn__=-UC*F" aria-label="Facebook">
-                <Facebook size={24} className="text-gray-1000 hover:text-blue-700 transition" />
+                <Facebook size={24} className="text-gray-800 hover:text-blue-700 transition" />
               </a>
               <a href="http://www.youtube.com/@MarcherAvecChrist" aria-label="YouTube">
-                <YoutubeIcon size={24} className="text-gray-1000 hover:text-red-600 transition" />
+                <YoutubeIcon size={24} className="text-gray-800 hover:text-red-600 transition" />
               </a>
             </div>
-            <p className="text-sm text-gray-1000 text-center md:text-right">
+            <p className="text-sm text-gray-800 text-center md:text-right">
               © 2025 Stéphanie.B – Tous droits réservés
             </p>
           </div>

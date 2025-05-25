@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { NavLink } from "react-router-dom";
+export default function Navbar() {
+    return (_jsxs("nav", { "aria-label": "Navigation principale", className: "\r\n        fixed top-0 left-0 w-full\r\n        bg-white/40 backdrop-blur-md\r\n        shadow-md px-6 py-4 flex justify-between items-center z-50\r\n      ", style: { WebkitBackdropFilter: "blur(8px)" }, children: [_jsx("div", { className: "text-xl font-bold text-blue-600", children: "St\u00E9phanie.B" }), _jsxs("ul", { className: "flex gap-6 text-gray-700", children: [_jsx("li", { children: _jsx(NavLink, { to: "/", end: true, className: ({ isActive }) => isActive ? "text-blue-600 font-semibold" : "hover:text-blue-600", children: "Accueil" }) }), _jsx("li", { children: _jsx(NavLink, { to: "/about", className: ({ isActive }) => isActive ? "text-blue-600 font-semibold" : "hover:text-blue-600", children: "\u00C0 propos" }) }), _jsx("li", { children: _jsx(NavLink, { to: "/contact", className: ({ isActive }) => isActive ? "text-blue-600 font-semibold" : "hover:text-blue-600", children: "Contact" }) })] })] }));
+}

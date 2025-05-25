@@ -1,20 +1,16 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/navbar";
-import Home from "./components/Hero";
-import About from "./components/About";
-import Contact from "./components/Contact";
+import { Outlet, useLocation } from 'react-router-dom';
+import Navbar from './components/navbar.js';
 
-function App() {
+export default function Layout() {
+  const location = useLocation();
+  const isContactPage = location.pathname === '/contact';
+
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="relative font-sans min-h-screen">
+      {!isContactPage && <Navbar />}
+      <main role="main" className="pt-16 sm:pt-20">
+        <Outlet />
+      </main>
+    </div>
   );
 }
-
-export default App;
